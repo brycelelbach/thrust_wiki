@@ -1,1 +1,10 @@
  * [Quick Start Guide](https://github.com/thrust/thrust/wiki/Quick-Start-Guide)
+ * Advanced
+   * Accessing Thrust's built-in backend systems
+     * [Changing the global device system](https://github.com/thrust/thrust/wiki/Device-Backends)
+     * [Changing the global host system](https://github.com/thrust/thrust/wiki/Host-Backends)
+     * [Direct system access](https://github.com/thrust/thrust/wiki/Direct-System-Access)
+   * Extending Thrust
+     * Customizing an existing system
+     * Building a completely novel system
+     * Customizable entry points
