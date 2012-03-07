@@ -5,6 +5,6 @@
      * [Changing the global host system](https://github.com/thrust/thrust/wiki/Host-Backends)
      * [Direct system access](https://github.com/thrust/thrust/wiki/Direct-System-Access)
    * Extending Thrust
-     * Customizing an existing system
+     * [Customizing an existing system](https://github.com/thrust/thrust/wiki/Derived-Systems)
      * Building a completely novel system
      * Customizable entry points
