@@ -1,1 +1,1 @@
-Welcome to the thrust wiki!
+ * [Quick Start Guide](https://github.com/thrust/thrust/wiki/Quick-Start-Guide)
