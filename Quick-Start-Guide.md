@@ -577,7 +577,7 @@ Keep reading, we've saved the best iterator for last! The ```zip_iterator``` is 
 
 What makes ```zip_iterator``` so useful is that most algorithms accept either one, or occasionally two, input sequences. The ```zip_iterator``` allows us to combine many independent sequences into a single sequence of tuples, which can be processed by a broad set of algorithms.
 
-Refer to the [arbitrary_transformation](https://github.com/thrust/thrust/blob/master/examples/arbitrary_transformation.cu) example to see how to implement a ternary transformation with ```zip_iterator``` and ```for_each```. A simple extension of this example would allow you to compute transformations with multiple **output** sequences as well.
+Refer to the [```arbitrary_transformation```](https://github.com/thrust/thrust/blob/master/examples/arbitrary_transformation.cu) example to see how to implement a ternary transformation with ```zip_iterator``` and ```for_each```. A simple extension of this example would allow you to compute transformations with multiple **output** sequences as well.
 
 In addition to convenience, ```zip_iterator``` allows us to implement programs more efficiently. For example, storing 3d points as an array of ```float3``` in CUDA is generally a bad idea, since array accesses are not properly coalesced. With ```zip_iterator``` we can store the three coordinates in three separate arrays, which does permit coalesced memory access. In this case, we use ```zip_iterator``` to create a **virtual** array of 3d vectors which we can feed in to Thrust algorithms. Refer to the [```dot_products_with_zip```](https://github.com/thrust/thrust/blob/master/examples/dot_products_with_zip.cu) example for additional details.
 
