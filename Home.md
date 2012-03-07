@@ -8,3 +8,4 @@
      * [Customizing an existing system](https://github.com/thrust/thrust/wiki/Derived-Systems)
      * [Building a completely novel system](https://github.com/thrust/thrust/wiki/Standalone-Systems)
      * [Customizable entry points](https://github.com/thrust/thrust/wiki/Dispatch-Targets)
+   * [Debugging](https://github.com/thrust/thrust/wiki/Debugging)
