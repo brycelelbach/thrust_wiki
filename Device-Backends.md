@@ -6,12 +6,12 @@ Here we demonstrate how to use Thrust's "backend systems". There are two basic w
 Selecting a global device system
 --------------------------------
 
-Here, we demonstrate how to switch between the CUDA (default), OpenMP, TBB, and standard C++ "device" backend systems. This is a global setting which applies to all types associated with the device system. In the following we'll consider the [monte_carlo](http://thrust.googlecode.com/hg/examples/monte_carlo.cu) sample program, but any of the [example programs](http://code.google.com/p/thrust/source/browse/trunk/examples/) would also do. Note that absolutely no changes to the source code are required to switch the device system.
+Here, we demonstrate how to switch between the CUDA (default), OpenMP, TBB, and standard C++ "device" backend systems. This is a global setting which applies to all types associated with the device system. In the following we'll consider the [```monte_carlo```](http://thrust.googlecode.com/hg/examples/monte_carlo.cu) sample program, but any of the [example programs](http://code.google.com/p/thrust/source/browse/trunk/examples/) would also do. Note that absolutely no changes to the source code are required to switch the device system.
 
 Using the CUDA device system
 ----------------------------
 
-First, download the source code for the [monte_carlo](http://thrust.googlecode.com/hg/examples/monte_carlo.cu) example.
+First, download the source code for the [```monte_carlo```](http://thrust.googlecode.com/hg/examples/monte_carlo.cu) example.
 
     $ wget http://thrust.googlecode.com/hg/examples/monte_carlo.cu
 
