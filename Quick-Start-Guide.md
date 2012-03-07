@@ -327,7 +327,7 @@ Both ```saxpy_fast``` and ```saxpy_slow``` are valid SAXPY implementations, howe
 
 Since SAXPY is *memory bound* (its performance is limited by memory bandwidth, not floating point performance) the larger number of reads and writes makes ```saxpy_slow``` much more expensive. In contrast, ```saxpy_fast``` will perform about as fast as SAXPY in an optimized BLAS implementation. In memory bound algorithms like SAXPY it is generally worthwhile to apply kernel fusion (combining multiple operations into a single kernel) to minimize the number of memory transactions.
 
-```thrust::transform``` only supports transformations with one or two input arguments (e.g. ```f(x) -> y``` and ```f(x,y) -> z```). When a transformation uses more than two input arguments it is necessary to use a different approach. The [```arbitrary_transformation```](http://code.google.com/p/thrust/source/browse/examples/arbitrary_transformation.cu) example demonstrates a solution that uses ```thrust::zip_iterator``` and ```thrust::for_each```.
+```thrust::transform``` only supports transformations with one or two input arguments (e.g. ```f(x) -> y``` and ```f(x,y) -> z```). When a transformation uses more than two input arguments it is necessary to use a different approach. The [```arbitrary_transformation```](https://github.com/thrust/thrust/blob/master/examples/arbitrary_transformation.cu) example demonstrates a solution that uses ```thrust::zip_iterator``` and ```thrust::for_each```.
 
 ###Reductions
 
