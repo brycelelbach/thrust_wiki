@@ -585,7 +585,7 @@ In addition to convenience, ```zip_iterator``` allows us to implement programs m
 
 This guide only scratches the surface of what you can do with Thrust. The following resources can help you learn to do more with Thrust or provide assistance when problems arise.
 
-  * Comprehensive [Documentation](http://code.google.com/p/thrust/wiki/Documentation) of Thrust's API
+  * Comprehensive [Documentation](https://github.com/thrust/thrust/wiki/Documentation) of Thrust's API
   * A list of [Frequently Asked Questions](http://code.google.com/p/thrust/wiki/FrequentlyAskedQuestions)
   * Collection of [example](https://github.com/thrust/thrust/tree/master/examples) programs
 
