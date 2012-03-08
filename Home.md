@@ -1,4 +1,5 @@
  * [Quick Start Guide](https://github.com/thrust/thrust/wiki/Quick-Start-Guide)
+ * [Documentation](https://github.com/thrust/thrust/wiki/Documentation)
  * Advanced
    * Accessing Thrust's built-in backend systems
      * [Changing the global device system](https://github.com/thrust/thrust/wiki/Device-Backends)
