@@ -67,7 +67,7 @@ $ nvcc version.cu -o version -I /home/nathan/libraries/
 
 Vectors
 -------
-Thrust provides two [vector](http://en.wikipedia.org/wiki/Vector_(C++\)) containers, host_vector and device_vector. As the names suggest, host_vector is stored in host memory while device_vector lives in GPU device memory. Thrust's vector containers are just like ```std::vector``` in the [C++ Standard Library](http://www.cplusplus.com/reference/stl/vector/). Like ```std::vector```, ```host_vector``` and ```device_vector``` are generic containers (able to store any data type) that can be resized dynamically. The following source code illustrates the use of Thrust's vector containers.
+Thrust provides two [vector](http://en.wikipedia.org/wiki/Vector_(C++\)) containers, `host_vector` and `device_vector`. As the names suggest, `host_vector` is stored in the CPU's system or "host" memory while `device_vector` lives in the GPU's "device" memory. Thrust's vector containers are just like ```std::vector``` in the [C++ Standard Library](http://www.cplusplus.com/reference/stl/vector/). Like ```std::vector```, ```host_vector``` and ```device_vector``` are generic containers (able to store any data type) that can be resized dynamically. The following source code illustrates the use of Thrust's vector containers.
 
 ```c++
 #include <thrust/host_vector.h>
