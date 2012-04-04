@@ -29,7 +29,7 @@ Enabling the OpenMP device system
 
 We can switch to the OpenMP device system with the following compiler options (no changes to the source code!)
 
-    $ nvcc -O2 -o monte_carlo monte_carlo.cu -Xcompiler -fopenmp -DTHRUST_DEVICE_BACKEND=THRUST_DEVICE_BACKEND_OMP -lgomp
+    $ nvcc -O2 -o monte_carlo monte_carlo.cu -Xcompiler -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp
 
 By default OpenMP runs one thread for each of the available cores, which is 4 on this particular system. Notice that the 'real' or [wall-clock](http://en.wikipedia.org/wiki/Wall_clock_time) time is almost exactly one 1/4th the 'user' or [CPU time](http://en.wikipedia.org/wiki/System_time), suggesting that ```monte_carlo``` is completely compute-bound and scales well .
 
@@ -65,7 +65,7 @@ Enabling the TBB device system
 
 We can switch to the TBB device system with the following compiler options
 
-    $ nvcc -O2 -o monte_carlo monte_carlo.cu -DTHRUST_DEVICE_BACKEND=THRUST_DEVICE_BACKEND_TBB -ltbb
+    $ nvcc -O2 -o monte_carlo monte_carlo.cu -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_TBB -ltbb
     $ time ./monte_carlo
     pi is around 3.14
 
@@ -81,10 +81,10 @@ Additional Details
 
 When using either the OpenMP or TBB systems, ```nvcc``` isn't required. In general, ```nvcc``` is only required when targeting Thrust at CUDA. For example, we could compile the previous code directly with ```g++``` with this command line:
 
-    $ g++ -O2 -o monte_carlo monte_carlo.cpp -fopenmp -DTHRUST_DEVICE_BACKEND=THRUST_DEVICE_BACKEND_OMP -lgomp -I<path-to-thrust-headers>
+    $ g++ -O2 -o monte_carlo monte_carlo.cpp -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp -I<path-to-thrust-headers>
 
 Note that we've copied ```monte_carlo.cu``` to ```monte_carlo.cpp``` so that ```g++``` recognizes that it's a c++ source file. The ```-fopenmp``` command line argument instructs ```g++``` to enable OpenMP directives. Without this option, the compilation will fail. The ```-lgomp``` command line argument instructs ```g++``` to link against the OpenMP library. Without this option, linking will fail.
 
 If necessary, we can explicitly select the CUDA backend like so:
 
-    $ nvcc -O2 -o monte_carlo monte_carlo.cu -DTHRUST_DEVICE_BACKEND=THRUST_DEVICE_BACKEND_CUDA
+    $ nvcc -O2 -o monte_carlo monte_carlo.cu -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_CUDA
