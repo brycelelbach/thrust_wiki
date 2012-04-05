@@ -1,4 +1,5 @@
  * [Quick Start Guide](https://github.com/thrust/thrust/wiki/Quick-Start-Guide)
+ * [Frequently Asked Questions](https://github.com/thrust/thrust/wiki/Frequently-Asked-Questions)
  * [Documentation](https://github.com/thrust/thrust/wiki/Documentation)
  * Advanced
    * Accessing Thrust's built-in backend systems
