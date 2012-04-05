@@ -2,6 +2,8 @@ Getting Started
 ---------------
 See the [Quick Start Guide](https://github.com/thrust/thrust/wiki/Quick-Start-Guide) page for a brief introduction to Thrust.
 
+A selection of [frequently asked questions](https://github.com/thrust/thrust/wiki/FrequentlyAskedQuestions) is available.
+
 Examples
 --------
 A collection of [example programs](https://github.com/thrust/thrust/tree/master/examples) is available.
