@@ -2,7 +2,7 @@ Getting Started
 ---------------
 See the [Quick Start Guide](https://github.com/thrust/thrust/wiki/Quick-Start-Guide) page for a brief introduction to Thrust.
 
-A selection of [frequently asked questions](https://github.com/thrust/thrust/wiki/FrequentlyAskedQuestions) is available.
+A selection of [frequently asked questions](https://github.com/thrust/thrust/wiki/Frequently-Asked-Questions) is available.
 
 Examples
 --------
