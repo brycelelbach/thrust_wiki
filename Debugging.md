@@ -134,3 +134,9 @@ While debugging, we can make Thrust check for errors at the earliest opportunity
 Thrust reports the error as soon as possible, and the host does not continue past the ```thrust::transform``` call.
 
 Don't forget to disable ```THRUST_DEBUG``` when building release code!
+
+Known Issues
+------------
+As of version 4.2, `nvcc` does not support device debugging Thrust code. Thrust functions compiled with `nvcc -G` will likely crash.
+
+The latest [CHANGELOG](https://github.com/thrust/thrust/blob/master/CHANGELOG) keeps a list of other such issues.
