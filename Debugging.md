@@ -139,4 +139,4 @@ Known Issues
 ------------
 As of version 4.2, `nvcc` does not support device debugging Thrust code. Thrust functions compiled with `nvcc -G` will likely crash.
 
-The latest [CHANGELOG](https://github.com/thrust/thrust/blob/master/CHANGELOG) keeps a list of other such issues.
+The latest [CHANGELOG](https://github.com/thrust/thrust/blob/master/CHANGELOG) keeps a list of issues such as these.
