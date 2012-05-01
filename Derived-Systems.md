@@ -30,7 +30,7 @@ template<typename Iterator, typename Function>
 }
 ```
 
-The function signature of our version of ```for_each``` looks just like ```thrust::for_each```, except that we've inserted a new parameter whose type is the tag we created. This allows our for_each to hook into Thrust's dispatch process, and it only applies when an iterator's system tag matches ```my_tag```.
+The function signature of our version of ```for_each``` looks just like ```thrust::for_each```, except that we've inserted a new parameter whose type is the tag we created. This allows our ```for_each``` to hook into Thrust's dispatch process, and it only applies when an iterator's system tag matches ```my_tag```.
 
 After printing our message, we call ```thrust::for_each```. We have to be careful to retag our iterator parameters back to ```device_system_tag``` so that Thrust won't get stuck in an infinite loop during dispatch.
 
