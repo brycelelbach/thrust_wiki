@@ -1,7 +1,7 @@
 Introduction
 ------------
 
-Instead of applying a global switch to the behavior of all of a program's ```device_vectors```, we can also access Thrust's systems directly. For each system, Thrust provides a ```vector``` container whose iterators are "tagged" by the system. For example, the header file [```thrust/system/tbb/vector.h```](http://code.google.com/p/thrust/source/browse/thrust/system/tbb/vector.h) defines ```thrust::tbb::vector``` whose iterators' system tag is ```thrust::tbb::tag```. When algorithms are dispatched on its iterators, they will be parallelized by TBB.
+Instead of applying a global switch to the behavior of all of a program's ```device_vectors```, we can also access Thrust's systems directly. For each system, Thrust provides a ```vector``` container whose iterators are "tagged" by the system. For example, the header file [```thrust/system/tbb/vector.h```](https://github.com/thrust/thrust/blob/master/thrust/system/tbb/vector.h) defines ```thrust::tbb::vector``` whose iterators' system tag is ```thrust::tbb::tag```. When algorithms are dispatched on its iterators, they will be parallelized by TBB.
 
 Using a system-specific vector
 ------------------------------
@@ -38,7 +38,7 @@ int main(void)
 }
 ```
 
-This code is a simple adaptation of what appears on the [frontpage](http://code.google.com/p/thrust). However, because the OpenMP system shares the same memory space as the host system, it incurs wasteful copies. To fix it, we can simply eliminate the ```host_vector```:
+This code is a simple adaptation of what appears on the [frontpage](http://thrust.github.com). However, because the OpenMP system shares the same memory space as the host system, it incurs wasteful copies. To fix it, we can simply eliminate the ```host_vector```:
 
 ```c++
 #include <thrust/system/omp/vector.h>
