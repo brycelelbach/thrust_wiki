@@ -239,7 +239,7 @@ With the exception of ```thrust::copy```, which can copy data between host and d
 
 ###Transformations
 
-Transformations are algorithms that apply an operation to each element in a set of (zero or more) input ranges and then stores the result in a destination range. One example we have already seen is ```thrust::fill```, which sets all elements of a range to a specified value. Other transformations include ```thrust::sequence```, ```thrust::replace```, and of course ```thrust::transform```. Refer to the [documentation](http://docs.thrust.googlecode.com/hg/group__transformations.html) for a complete listing.
+Transformations are algorithms that apply an operation to each element in a set of (zero or more) input ranges and then stores the result in a destination range. One example we have already seen is ```thrust::fill```, which sets all elements of a range to a specified value. Other transformations include ```thrust::sequence```, ```thrust::replace```, and of course ```thrust::transform```. Refer to the [documentation](http://thrust.github.com/doc/group__transformations.html) for a complete listing.
 
 The following source code demonstrates several of the transformation algorithms. Note that ```thrust::negate``` and ```thrust::modulus``` are known as *functors* in C++ terminology. Thrust provides these and other common functors like ```plus``` and ```multiplies``` in the file ```thrust/functional.h```.
 
@@ -356,7 +356,7 @@ Although ```thrust::reduce``` is sufficient to implement a wide variety of reduc
     int result = thrust::count(vec.begin(), vec.end(), 1);
     // result is three
 
-Other reduction operations include ```thrust::count_if```, ```thrust::min_element```, ```thrust::max_element```, ```thrust::is_sorted```, ```thrust::inner_product```, and several others. Refer to the [documentation](http://docs.thrust.googlecode.com/hg/group__reductions.html) for a complete listing.
+Other reduction operations include ```thrust::count_if```, ```thrust::min_element```, ```thrust::max_element```, ```thrust::is_sorted```, ```thrust::inner_product```, and several others. Refer to the [documentation](http://thrust.github.com/doc/group__reductions.html) for a complete listing.
 
 The SAXPY example in the Transformations section showed how kernel fusion can be used to reduce the number of memory transfers used by a transformation kernel. With ```thrust::transform_reduce``` we can also apply kernel fusion to reduction kernels. Consider the following example which computes the norm of a vector.
 
@@ -422,7 +422,7 @@ In an inclusive scan each element of the output is the corresponding [partial su
 
     // data is now {0, 1, 1, 3, 5, 6}
 
-So now ```data[2] = data[0] + data[1]```. As these examples show, ```inclusive_scan``` and ```exclusive_scan``` are permitted to be performed in-place. Thrust also provides the functions ```transform_inclusive_scan``` and ```transform_exclusive_scan``` which apply a unary function to the input sequence before performing the scan. Refer to the [documentation](http://docs.thrust.googlecode.com/hg/group__prefixsums.html) for a complete list of scan variants.
+So now ```data[2] = data[0] + data[1]```. As these examples show, ```inclusive_scan``` and ```exclusive_scan``` are permitted to be performed in-place. Thrust also provides the functions ```transform_inclusive_scan``` and ```transform_exclusive_scan``` which apply a unary function to the input sequence before performing the scan. Refer to the [documentation](http://thrust.github.com/doc/group__prefixsums.html) for a complete list of scan variants.
 
 ###Reordering
 
@@ -433,7 +433,7 @@ Thrust provides support for **partitioning** and **stream compaction** through t
   * ```remove``` and ```remove_if``` : remove elements that fail a predicate test
   * ```unique```: remove consecutive duplicates within a range
 
-Refer to the [documentation](http://docs.thrust.googlecode.com/hg/group__reordering.html) for a complete list of reordering functions and examples of their usage.
+Refer to the [documentation](http://thrust.github.com/doc/group__reordering.html) for a complete list of reordering functions and examples of their usage.
 
 ###Sorting
 
@@ -586,7 +586,7 @@ In addition to convenience, ```zip_iterator``` allows us to implement programs m
 This guide only scratches the surface of what you can do with Thrust. The following resources can help you learn to do more with Thrust or provide assistance when problems arise.
 
   * Comprehensive [Documentation](https://github.com/thrust/thrust/wiki/Documentation) of Thrust's API
-  * A list of [Frequently Asked Questions](http://code.google.com/p/thrust/wiki/FrequentlyAskedQuestions)
+  * A list of [Frequently Asked Questions](https://github.com/thrust/thrust/wiki/Frequently-Asked-Questions)
   * Collection of [example](https://github.com/thrust/thrust/tree/master/examples) programs
 
 We strongly encourage users to subscribe to the [thrust-users](http://groups.google.com/group/thrust-users) mailing list. The mailing list is a great place to seek out help from the Thrust developers and other Thrust users.
