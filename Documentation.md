@@ -12,6 +12,6 @@ Thrust API
 ----------
 There are several ways to explore the Thrust API.
 
-  * [Browse by Topic](http://docs.thrust.googlecode.com/hg/modules.html)
-  * [Browse by File](http://docs.thrust.googlecode.com/hg/files.html)
-  * [Browse by Name](http://docs.thrust.googlecode.com/hg/namespacemembers.html)
+  * [Browse by Topic](http://thrust.github.com/doc/modules.html)
+  * [Browse by File](http://thrust.github.com/doc/files.html)
+  * [Browse by Name](http://thrust.github.com/doc/namespacemembers.html)
