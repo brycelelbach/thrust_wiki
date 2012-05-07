@@ -54,7 +54,7 @@ int main()
 }
 ```
 
-The second call to ```thrust::for_each``` doesn't generate any message, because its iterators have the normal ```device_system_tag```. The full source code for this program is included in the [```minimal_custom_backend example```](http://code.google.com/p/thrust/source/browse/examples/minimal_custom_backend.cu).
+The second call to ```thrust::for_each``` doesn't generate any message, because its iterators have the normal ```device_system_tag```. The full source code for this program is included in the [```minimal_custom_backend example```](https://github.com/thrust/thrust/blob/master/examples/minimal_custom_backend.cu).
 
 Temporary Allocation Example
 ----------------------------
