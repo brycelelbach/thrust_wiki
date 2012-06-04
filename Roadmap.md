@@ -25,4 +25,4 @@ A non-comprehensive list of non-goals (unlikely to implement)
 
   * Support for Domain-Specific Functionality
   * Multi-Dimensional Data Structures
-  * Support for System-Specific Idiosyncracies
+  * Support for Backend System-Specific Idiosyncracies
