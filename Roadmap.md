@@ -1,4 +1,4 @@
-A non-comprehensive list of interesting future functionality
+A non-comprehensive list of future goals
 
   * [Stateful Dispatch](https://github.com/thrust/thrust/issues/3)
   * [Bulk Synchronous Data Parallel Kernel Launch](https://github.com/thrust/thrust/issues/124)
@@ -19,7 +19,7 @@ A non-comprehensive list of interesting future functionality
     * [Concise Compilation Error Reporting](https://github.com/thrust/thrust/issues/139)
     * [Generalized `for_each` and `transform`](https://github.com/thrust/thrust/issues/107)
 
-A non-comprehensive list of uninteresting functionality (will not implement)
+A non-comprehensive list of non-goals (unlikely to implement)
 
   * Support for Domain-Specific Functionality
   * Multi-Dimensional Data Structures
