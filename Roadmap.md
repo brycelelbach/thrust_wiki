@@ -11,6 +11,8 @@ A non-comprehensive list of future goals
   * [NUMA Systems](https://github.com/thrust/thrust/issues/132)
   * [multi-GPU](https://github.com/thrust/thrust/issues/133)
   * [Cluster](https://github.com/thrust/thrust/issues/134)
+  * [`__device__`-side Thrust](https://github.com/thrust/thrust/issues/140)
+  * [Block-Convergent Algorithms](https://github.com/thrust/thrust/issues/141)
   * Improved Algorithm Performance
     * [merge and set operations](https://github.com/thrust/thrust/issues/135)
     * [radix sort](https://github.com/thrust/thrust/issues/136)
