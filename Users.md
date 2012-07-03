@@ -52,6 +52,10 @@
 -----
 *PISTON is a cross-platform software library providing frequently used operations for scientific visualization and analysis.*
 
+[Torch7](http://www.torch.ch) - Modern Machine Learning Library
+-----
+*Torch7 provides a Matlab-like environment for state-of-the-art machine learning algorithms.*
+
 [VMD](https://www-s.ks.uiuc.edu/Research/vmd) - Visual Molecular Dynamics
 -----
 *VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular systems using 3-D graphics and built-in scripting.*
