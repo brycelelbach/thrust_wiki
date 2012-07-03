@@ -11,4 +11,5 @@
      * [Building a completely novel system](http://github.com/thrust/thrust/wiki/Standalone-Systems)
      * [Customizable entry points](http://github.com/thrust/thrust/wiki/Dispatch-Targets)
    * [Debugging](http://github.com/thrust/thrust/wiki/Debugging)
+ * [Users](http://github.com/thrust/thrust/wiki/Users)
  * [Roadmap](http://github.com/thrust/thrust/wiki/Roadmap)
