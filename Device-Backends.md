@@ -1,7 +1,7 @@
 Introduction
 ------------
 
-Here we demonstrate how to use Thrust's "backend systems". There are two basic ways to access Thrust's systems: by specifying the global "device" system associated with types like ```thrust::device_vector```, or by selecting a specific container associated with a particular system, such as ```thrust::cuda::vector```. These two approaches are complementary and may be used together within the same program.
+Here we demonstrate how to use Thrust's "backend systems" which control how Thrust algorithms get mapped to and executed on the parallel processors available to the application. There are two basic ways to access Thrust's systems: by specifying the global "device" system associated with types like ```thrust::device_vector```, or by selecting a specific container associated with a particular system, such as ```thrust::cuda::vector```. These two approaches are complementary and may be used together within the same program.
 
 Selecting a global device system
 --------------------------------
