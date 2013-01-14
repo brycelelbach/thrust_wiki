@@ -1,4 +1,6 @@
-Like the device system, we can also control the host system which applies to untagged, or "raw" types like ```thrust::host_vector::iterator```, ```std::vector::iterator```s, and raw pointers. The host system backend is selected via the ```THRUST_HOST_SYSTEM``` macro:
+Like the device system, we can also control the host system which applies to untagged, or "raw" types like ```thrust::host_vector::iterator```, ```std::vector::iterator```s, and raw pointers. We can use this feature to parallelize Thrust algorithms on host types such as `thrust::host_vector` with a parallel backend like OpenMP.
+
+The host system backend is selected via the ```THRUST_HOST_SYSTEM``` macro:
 
     $ nvcc -Xcompiler -fopenmp -DTHRUST_HOST_SYSTEM=THRUST_HOST_SYSTEM_OMP my_program.cu -lgomp
 
