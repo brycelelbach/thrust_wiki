@@ -171,4 +171,4 @@ int main()
 }
 ```
 
-The names of the execution policies for the host and device backend systems are ```thrust::host``` and ```thrust::device```, respectively. They can be used in the same way we've demonstrated the use of the more specific policies such as ```thrust::cuda::par```.
+The names of the execution policies for the host and device backend systems are ```thrust::host``` and ```thrust::device```, respectively (found in ```<thrust/execution_policy.h>```). They can be used in the same way we've demonstrated the use of the more specific policies such as ```thrust::cuda::par```.
