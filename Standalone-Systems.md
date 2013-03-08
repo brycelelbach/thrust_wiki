@@ -7,7 +7,7 @@ Memory Model Primitives
 
 The first task when building a stand alone Thrust system is to build the protocol which defines its memory model. Special primitives are required to support systems which may be implemented with distributed, or remote memory architectures. These primitives allow the programmer to manipulate logical scalar objects in memory.
 
-Let's choose a name for our system. How about ```standalone```? Let's create its system tag in that namespace:
+Let's choose a name for our system. How about ```standalone```? Let's create its system policy tag in that namespace:
 
 ```c++
 namespace standalone
@@ -28,7 +28,7 @@ Next, we'll define how to allocate and deallocate the standalone system's storag
 namespace standalone
 {
 
-void *malloc(tag, std::size_t n)
+void *malloc(policy_tag, std::size_t n)
 {
   return std::malloc(n);
 }
