@@ -15,7 +15,7 @@ Let's choose a name for our system. How about ```standalone```? Let's create its
 namespace standalone
 {
 
-// standalone's tag is just an empty struct derived from ```thrust::execution_policy```.
+// standalone's tag is just an empty struct derived from thrust::execution_policy.
 struct tag : thrust::execution_policy<tag> {};
 
 }
