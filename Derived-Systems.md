@@ -124,7 +124,7 @@ int main()
 }
 ```
 
-This code demonstrates the basic functionality, but the more sophisticated ```custom_temporary_allocation``` example shows how to build an allocation scheme which caches calls to ```thrust::device_malloc```.
+This code demonstrates the basic functionality, but the more sophisticated [```custom_temporary_allocation```](https://github.com/thrust/thrust/blob/master/examples/cuda/custom_temporary_allocation.cu) example shows how to build an allocation scheme which caches calls to ```thrust::device_malloc```.
 
 Non-Primitive Algorithms
 ------------------------
