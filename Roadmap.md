@@ -1,6 +1,6 @@
 A non-comprehensive list of future goals
 
-  * [Stateful Dispatch](https://github.com/thrust/thrust/issues/3)
+  * <del>[Stateful Dispatch](https://github.com/thrust/thrust/issues/3)</del>
   * [Bulk Synchronous Data Parallel Kernel Launch](https://github.com/thrust/thrust/issues/124)
   * [Group Shared Variables](https://github.com/thrust/thrust/issues/125)
   * [Promises & Futures](https://github.com/thrust/thrust/issues/126)
