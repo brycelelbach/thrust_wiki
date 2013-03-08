@@ -67,16 +67,18 @@ int main(void)
 
 Because the TBB system targets the host CPU as well, it is similarly interoperable with the host CPU's memory.
 
-Retagging an iterator
----------------------
+Execution Policies
+------------------
 
-Sometimes it can be inconvenient or wasteful to introduce a new ```vector``` simply to parallelize algorithms which operate on some existing data. We can parallelize *in situ* by "retagging" iterators.
+Sometimes it can be inconvenient or wasteful to introduce a new ```vector``` simply to parallelize
+algorithms which operate on some existing data. We can parallelize *in situ* by using invoking an algorithm
+with an execution policy.
 
-Let's take a look at the previous example, but instead we'll show how to use a ```std::vector``` with Thrust algorithms while still providing parallelization.
+Let's take a look at the previous example, but instead we'll show how to use a ```std::vector``` with Thrust
+algorithms while still providing parallelization.
 
 ```c++
-#include <thrust/system/omp/memory.h>
-#include <thrust/iterator/retag.h>
+#include <thrust/system/omp/execution_policy.h>
 #include <thrust/sort.h>
 #include <cstdlib>
 #include <algorithm>
@@ -89,111 +91,82 @@ int main(void)
   std::vector<int> vec(1 << 20);
   std::generate(vec.begin(), vec.end(), rand);
 
-  // sort data in parallel with OpenMP by retagging vec's iterators
-  thrust::sort(thrust::retag<thrust::omp::tag>(vec.begin()),
-               thrust::retag<thrust::omp::tag>(vec.end()));
+  // sort data in parallel with OpenMP by specifying its execution policy
+  thrust::sort(thrust::omp::par, vec.begin(), vec.end());
 
   // report the largest number
   std::cout << "Largest number is " << vec.back() << std::endl;
 }
 ```
 
-In this example, Thrust knows it's okay to retag ```std::vector```'s iterator with ```omp::tag``` because
+In this example, we've explicitly told Thrust to use OpenMP to parallelize the call to ```thrust::sort``` by
+providing ```thrust::omp::par``` (```par``` for "parallel") as the first argument.
 
-  * ```std::vector::iterator``` is implicitly tagged with ```thrust::cpp::tag``` and
-  * ```thrust::omp::tag``` is related to ```thrust::cpp::tag``` by convertibility.
+The same works with the standard C++ backend system or TBB:
 
-Thrust will refuse to retag an iterator to an unrelated tag. For example, attempts to retag ```std::vector```'s iterators with CUDA will generate a compiler error because ```thrust::cpp::tag``` is unrelated to ```thrust::cuda::tag```. This code:
-
-```c++
-// attempt to sort a std::vector's data in parallel with CUDA by retagging vec's iterators
-thrust::sort(thrust::retag<thrust::cuda::tag>(vec.begin()),
-             thrust::retag<thrust::cuda::tag>(vec.end()));
 ```
-Generates an error:
-
-    $ nvcc retag_cuda.cpp
-    retag_cuda.cpp: In function ‘int main()’:
-    retag_cuda.cpp:15:62: error: no matching function for call to ‘retag(std::vector<int>::iterator)’
-    retag_cuda.cpp:16:60: error: no matching function for call to ‘retag(std::vector<int>::iterator)’
-
-Reinterpreting a tag
---------------------
-
-If we have implementation-specific knowledge of the interoperability of two systems, we can forcibly *reinterpret* an iterator's tag to some other unrelated tag using the ```reinterpret_tag``` function. For example, we can reinterpret the raw pointer returned by ```cudaMalloc``` to use the CUDA system:
-
-```c++
-#include <thrust/system/cuda/memory.h>
-#include <thrust/iterator/retag.h>
-#include <thrust/fill.h>
-#include <cuda.h>
+#include <vector>
+#include <algorithm>
+#include <thrust/sort.h>
+#include <thrust/system/cpp/execution_policy.h>
+#include <thrust/system/tbb/execution_policy.h>
 
 int main(void)
 {
-  size_t N = 10;
+  // serially generate 1M random numbers
+  std::vector<int> vec(1 << 20);
+  std::generate(vec.begin(), vec.end(), rand);
 
-  // obtain raw pointer to device memory
-  int * raw_ptr;
-  cudaMalloc((void **) &raw_ptr, N * sizeof(int));
+  // sort data in parallel using the standard C++ backend by specifying its execution policy
+  thrust::sort(thrust::cpp::par, vec.begin(), vec.end());
 
-  // reinterpret the raw_ptr's tag to cuda::tag
-  thrust::fill(thrust::reinterpret_tag<thrust::cuda::tag>(raw_ptr),
-               thrust::reinterpret_tag<thrust::cuda::tag>(raw_ptr + N),
-               (int) 0);
-
-  // free memory
-  cudaFree(raw_ptr);
-
-  return 0;
+  // check that the data is actually sorted using the TBB backend
+  std::cout << "vec is sorted: " << thrust::is_sorted(thrust::tbb::par, vec.begin(), vec.end());
 }
 ```
-
-If we need to, we can similarly reinterpret an ```omp::vector```'s iterators to use the TBB system (and vice versa):
-
-```c++
-#include <thrust/system/omp/vector.h>
-#include <thrust/system/tbb/vector.h>
-#include <thrust/iterator/retag.h>
-#include <cstdio>
-
-struct omp_hello
-{
-  void operator()(int x)
-  {
-    printf("Hello, world from OpenMP!\n");
-  }
-};
-
-struct tbb_hello
-{
-  void operator()(int x)
-  {
-    printf("Hello, world from TBB!\n");
-  }
-};
-
-int main()
-{
-  thrust::omp::vector<int> omp_vec(1, 7);
-  thrust::tbb::vector<int> tbb_vec(1, 13);
-
-  thrust::for_each(thrust::reinterpret_tag<thrust::tbb::tag>(omp_vec.begin()),
-                   thrust::reinterpret_tag<thrust::tbb::tag>(omp_vec.end()), 
-                   tbb_hello());
-
-  thrust::for_each(thrust::reinterpret_tag<thrust::omp::tag>(tbb_vec.begin()),
-                   thrust::reinterpret_tag<thrust::omp::tag>(tbb_vec.end()),
-                   omp_hello());
-}
-```
-
-The output:
-
-    $ nvcc reinterpret.cu -lgomp -ltbb -Xcompiler -fopenmp -run
-    Hello, world from TBB!
-    Hello, world from OpenMP!
 
 Additional info
 ---------------
 
-The type of the result returned by ```retag``` and ```reinterpret_tag``` is an unspecified iterator type whose behavior is the same as the iterator parameter and whose tag is the same as the tag template parameter.
+When using execution policies directly, it's important to make sure that the backend of interest will be
+able to safely dereference the iterators provided to the algorithm.
+
+For example, this code snippet will certainly meet with failure:
+
+```
+#include <vector>
+#include <thrust/sort.h>
+#include <thrust/system/cuda/execution_policy.h>
+
+int main()
+{
+  std::vector<int> vec = ...
+
+  // error -- CUDA kernels can't access std::vector!
+  thrust::sort(thrust::cuda::par, vec.begin(), vec.end());
+}
+```
+
+because CUDA isn't able to access memory in a `std::vector`.
+
+On the other hand, it's safe to use ```thrust::cuda::par``` with raw pointers allocated by `cudaMalloc`, even when the pointer isn't wrapped by ```thrust::device_ptr```:
+
+```
+#include <thrust/tabulate.h>
+#include <thrust/sort.h>
+#include <iostream>
+
+int main()
+{
+  int n = 13;
+  int *raw_ptr = 0;
+  cudaMalloc(&raw_ptr, n * sizeof(int));
+
+  // it's OK to pass raw pointers allocated by cudaMalloc to an algorithm invoked with cuda::par
+  thrust::tabulate(thrust::cuda::par, raw_ptr, raw_ptr + n, thrust::identity<int>());
+
+  std::cout << "data is sorted: " << thrust::is_sorted(thrust::cuda::par, raw_ptr, raw_ptr + n);
+
+  cudaFree(raw_ptr);
+}
+```
