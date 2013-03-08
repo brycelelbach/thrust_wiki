@@ -10,11 +10,13 @@ The first task when building a stand alone Thrust system is to build the protoco
 Let's choose a name for our system. How about ```standalone```? Let's create its system policy tag in that namespace:
 
 ```c++
+#include <thrust/execution_policy.h>
+
 namespace standalone
 {
 
-// standalone's tag is just an empty struct.
-struct tag {};
+// standalone's tag is just an empty struct derived from ```thrust::execution_policy```.
+struct tag : thrust::execution_policy<tag> {};
 
 }
 ```
