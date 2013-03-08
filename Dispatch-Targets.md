@@ -947,6 +947,12 @@ ForwardIterator2 swap_ranges(tag,
                              ForwardIterator1 last1,
                              ForwardIterator2 first2);
 
+template<typename ForwardIterator, typename UnaryOperation>
+  void tabulate(tag,
+                ForwardIterator first,
+                ForwardIterator last,
+                UnaryOperation unary_op);
+
 template<typename InputIterator,
          typename OutputIterator,
          typename UnaryFunction>
