@@ -71,7 +71,7 @@ Execution Policies
 ------------------
 
 Sometimes it can be inconvenient or wasteful to introduce a new ```vector``` simply to parallelize
-algorithms which operate on some existing data. We can parallelize *in situ* by using invoking an algorithm
+algorithms which operate on some existing data. We can parallelize *in situ* by invoking an algorithm
 with an execution policy.
 
 Let's take a look at the previous example, but instead we'll show how to use a ```std::vector``` with Thrust
