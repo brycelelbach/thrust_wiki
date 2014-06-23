@@ -4,6 +4,7 @@ A non-comprehensive list of future goals
   * [Bulk Synchronous Data Parallel Kernel Launch](https://github.com/thrust/thrust/issues/124)
   * [Group Shared Variables](https://github.com/thrust/thrust/issues/125)
   * [Promises & Futures](https://github.com/thrust/thrust/issues/126)
+  * [Asynchronous Algorithm Interface](https://github.com/thrust/thrust/issues/500)
   * [State-of-the-Art Counter-Based Random Number Generator](https://github.com/thrust/thrust/issues/38)
   * [Range-Based Interface](https://github.com/thrust/thrust/issues/127)
   * [Dynamic Backend](https://github.com/thrust/thrust/issues/130)
