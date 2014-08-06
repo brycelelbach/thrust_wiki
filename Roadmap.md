@@ -16,8 +16,8 @@ A non-comprehensive list of future goals
   * [Block-Convergent Algorithms](https://github.com/thrust/thrust/issues/141)
   * Improved Algorithm Performance
     * <del>[merge and set operations](https://github.com/thrust/thrust/issues/135)</del>
-    * [radix sort](https://github.com/thrust/thrust/issues/136)
-    * [merge sort](https://github.com/thrust/thrust/issues/137)
+    * <del>[radix sort](https://github.com/thrust/thrust/issues/136)</del>
+    * <del>[merge sort](https://github.com/thrust/thrust/issues/137)</del>
   * Improved Productivity when using Thrust
     * [Concise Compilation Error Reporting](https://github.com/thrust/thrust/issues/139)
     * [Generalized `for_each` and `transform`](https://github.com/thrust/thrust/issues/107)
