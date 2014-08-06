@@ -12,7 +12,7 @@ A non-comprehensive list of future goals
   * [NUMA Systems](https://github.com/thrust/thrust/issues/132)
   * [multi-GPU](https://github.com/thrust/thrust/issues/133)
   * [Cluster](https://github.com/thrust/thrust/issues/134)
-  * [Enable Thrust algorithms from CUDA `__device__` Functions](https://github.com/thrust/thrust/issues/140)
+  * <del>[Enable Thrust algorithms from CUDA `__device__` Functions](https://github.com/thrust/thrust/issues/140)</del>
   * [Block-Convergent Algorithms](https://github.com/thrust/thrust/issues/141)
   * Improved Algorithm Performance
     * <del>[merge and set operations](https://github.com/thrust/thrust/issues/135)</del>
