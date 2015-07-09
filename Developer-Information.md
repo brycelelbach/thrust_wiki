@@ -49,6 +49,16 @@ In order to see the available build options run
 
     $ scons -h
 
+Example Programs
+----------------
+
+You can build the suite of example programs by running the following command inside the thrust root directory:
+
+    $ scons run_examples
+
+In order to speed up the build process, you can enable [parallel building](http://www.scons.org/doc/production/HTML/scons-user.html#idp1416840244) through 
+    
+    $ scons run_examples --jobs=4
 
 Unit Tests
 ------------
@@ -57,22 +67,6 @@ You can build the unit tester through running the following command inside the t
 
     $ scons unit_tests
 
-In order to speed up the build process, you can enable [parallel building](http://www.scons.org/doc/production/HTML/scons-user.html#idp1416840244) through 
-    
-    $ scons unit_tests --jobs=4
-
 After building finished, you can run all tests through
 
     $ scons run_unit_tests
-
-
-Performance Tests
-------------
-
-To build the performance tests, run: 
-
-    $ scons performance_tests
-
-After building finished, you can run all tests through
-
-    $ scons run_performance_tests
