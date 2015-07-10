@@ -23,7 +23,7 @@ To checkout the current development version of Thrust use
 
     $ git clone https://github.com/thrust/thrust.git
 
-In order to run the tests, CUDA must be installed on your system because `nvcc` is used as the compiler driver. The tests assume the following default installation locations:
+In order to run the tests using the CUDA backend, CUDA must be installed on your system because `nvcc` is used as the compiler driver. The tests assume the following default installation locations:
 
 **Windows:**
 
