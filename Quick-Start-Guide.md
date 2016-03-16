@@ -159,7 +159,7 @@ int main(void)
 }
 ```
 
-Here we've illustrated use of the ```fill```, ```copy```, and ```sequence``` functions. The ```copy``` function can be used to copy a range of host or device elements to another host or device vector. Like the corresponding C++ Standard Library function, ```thrust::fill``` simply sets a range of elements to a specific value. Thrust's ```sequence``` function can be used to a create a sequence of equally spaced values.
+Here we've illustrated use of the ```fill```, ```copy```, and ```sequence``` functions. The ```copy``` function can be used to copy a range of host or device elements to another host or device vector. Like the corresponding C++ Standard Library function, ```thrust::fill``` simply sets a range of elements to a specific value. Thrust's ```sequence``` function can be used to create a sequence of equally spaced values.
 
 ###Thrust Namespace
 
@@ -331,7 +331,7 @@ Since SAXPY is *memory bound* (its performance is limited by memory bandwidth, n
 
 ###Reductions
 
-A reduction algorithm uses a binary operation to reduce an input sequence to a single value. For example, the sum of an array of numbers is obtained by reducing the array with a plus operation. Similarly, the maximum of an array is obtained by reducing with a operator that takes two inputs and returns the maximum. The sum of an array is implemented with ```thrust::reduce``` as follows:
+A reduction algorithm uses a binary operation to reduce an input sequence to a single value. For example, the sum of an array of numbers is obtained by reducing the array with a plus operation. Similarly, the maximum of an array is obtained by reducing with an operator that takes two inputs and returns the maximum. The sum of an array is implemented with ```thrust::reduce``` as follows:
 
     int sum = thrust::reduce(D.begin(), D.end(), (int) 0, thrust::plus<int>());
 
@@ -470,7 +470,7 @@ Like their standard library brethren, the sorting functions also accept user-def
 Fancy Iterators
 ---------------
 
-Fancy iterators perform a variety of valuable purposes. In this section we'll show how fancy iterators allow us to attack a broader class problems with the standard Thrust algorithms. For those familiar with the [Boost C++ Library](http://www.boost.org/), note that our fancy iterators were inspired by (and generally derived from) those in [Boost Iterator Library](http://www.boost.org/doc/libs/1_40_0/libs/iterator/doc/index.html).
+Fancy iterators perform a variety of valuable purposes. In this section we'll show how fancy iterators allow us to attack a broader class of problems with the standard Thrust algorithms. For those familiar with the [Boost C++ Library](http://www.boost.org/), note that our fancy iterators were inspired by (and generally derived from) those in the [Boost Iterator Library](http://www.boost.org/doc/libs/1_40_0/libs/iterator/doc/index.html).
 
 ### ```constant_iterator```
 
@@ -548,7 +548,7 @@ In the previous section we showed how ```transform_iterator``` is used to fuse t
 
 Here we have used the ```make_permutation_iterator``` function to simplify the construction of the ```permutation_iterators```. The first argument to ```make_permutation_iterator``` is the source array of the gather operation and the second is the list of map indices. Note that we pass in ```source.begin()``` for the first argument in both cases, but vary the second argument to define the beginning and end of the sequence.
 
-When a ```permutation_iterator``` is used as an output sequence of a function it is equivalent to fusing a scatter operation to the algorithm. In general ```permutation_iterator``` allows you to operate on specific set of values in a sequence instead of the entire sequence.
+When a ```permutation_iterator``` is used as an output sequence of a function it is equivalent to fusing a scatter operation to the algorithm. In general ```permutation_iterator``` allows you to operate on a specific set of values in a sequence instead of the entire sequence.
 
 ###```zip_iterator```
 
