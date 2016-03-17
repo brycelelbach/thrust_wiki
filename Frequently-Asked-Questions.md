@@ -30,7 +30,7 @@
   * Can I create a `thrust::device_vector` from memory I've allocated myself?
     * No. Instead, [wrap your externally allocated raw pointer](https://github.com/thrust/thrust/blob/master/examples/cuda/wrap_pointer.cu) with `thrust::device_ptr` and pass it to Thrust algorithms.
   * How do I find the array *index* of the element with the maximum/minimum value?
-    * Use `thrust::max_element` or `thrust::min_element`, which are found int he file `<thrust/extrema.h>`
+    * Use `thrust::max_element` or `thrust::min_element`, which are found in the file `<thrust/extrema.h>`
   * Can I call Thrust algorithms inside a CUDA kernel?
     * No, it is not currently possible to call Thrust algorithms inside a `__global__` or `__device__` function.
   * Can I call Thrust algorithms from CUDA Fortran?
