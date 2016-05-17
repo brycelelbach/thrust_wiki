@@ -32,7 +32,7 @@
   * How do I find the array *index* of the element with the maximum/minimum value?
     * Use `thrust::max_element` or `thrust::min_element`, which are found in the file `<thrust/extrema.h>`
   * Can I call Thrust algorithms inside a CUDA kernel?
-    * No, it is not currently possible to call Thrust algorithms inside a `__global__` or `__device__` function.
+    * Yes! Thrust algorithms may be called from `__global__` or `__device__` functions when invoked with an execution policy.
   * Can I call Thrust algorithms from CUDA Fortran?
     * Yes! This [example](http://cudamusing.blogspot.com/2011/06/calling-thrust-from-cuda-fortran.html) shows how to call Thrust's `sort` algorithm from Fortran.
 
