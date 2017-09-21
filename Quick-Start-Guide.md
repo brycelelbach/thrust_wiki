@@ -161,11 +161,11 @@ int main(void)
 
 Here we've illustrated use of the ```fill```, ```copy```, and ```sequence``` functions. The ```copy``` function can be used to copy a range of host or device elements to another host or device vector. Like the corresponding C++ Standard Library function, ```thrust::fill``` simply sets a range of elements to a specific value. Thrust's ```sequence``` function can be used to create a sequence of equally spaced values.
 
-###Thrust Namespace
+### Thrust Namespace
 
 You'll notice that we use things like ```thrust::host_vector``` or ```thrust::copy``` in our examples. The ```thrust::``` part tells the C++ compiler that we want to look inside the ```thrust``` namespace for a specific function or class. Namespaces are a nice way to avoid name collisions. For instance, ```thrust::copy``` is different from ```std::copy``` provided in the C++ Standard Library. C++ namespaces allow us to distinguish between these two ```copy``` functions.
 
-###Iterators and Static Dispatching
+### Iterators and Static Dispatching
 
 In this section we used expressions like ```H.begin()``` and ```H.end()``` or offsets like ```D.begin() + 7```. The result of ```begin()``` and ```end()``` is called an iterator in C++. In the case of vector containers, which are really just arrays, iterators can be thought of as pointers to array elements. Therefore, ```H.begin()``` is an iterator that points to the first element of the array stored inside the ```H``` vector. Similarly, ```H.end()``` points to the element one past the last element of the ```H``` vector.
 
@@ -237,7 +237,7 @@ All algorithms in Thrust have implementations for both host and device. Specific
 
 With the exception of ```thrust::copy```, which can copy data between host and device, all iterator arguments to a Thrust algorithm should live in the same place: either all on the host or all on the device. When this requirement is violated the compiler will produce an error message.
 
-###Transformations
+### Transformations
 
 Transformations are algorithms that apply an operation to each element in a set of (zero or more) input ranges and then stores the result in a destination range. One example we have already seen is ```thrust::fill```, which sets all elements of a range to a specified value. Other transformations include ```thrust::sequence```, ```thrust::replace```, and of course ```thrust::transform```. Refer to the [documentation](http://thrust.github.com/doc/group__transformations.html) for a complete listing.
 
@@ -329,7 +329,7 @@ Since SAXPY is *memory bound* (its performance is limited by memory bandwidth, n
 
 ```thrust::transform``` only supports transformations with one or two input arguments (e.g. ```f(x) -> y``` and ```f(x,y) -> z```). When a transformation uses more than two input arguments it is necessary to use a different approach. The [```arbitrary_transformation```](https://github.com/thrust/thrust/blob/master/examples/arbitrary_transformation.cu) example demonstrates a solution that uses ```thrust::zip_iterator``` and ```thrust::for_each```.
 
-###Reductions
+### Reductions
 
 A reduction algorithm uses a binary operation to reduce an input sequence to a single value. For example, the sum of an array of numbers is obtained by reducing the array with a plus operation. Similarly, the maximum of an array is obtained by reducing with an operator that takes two inputs and returns the maximum. The sum of an array is implemented with ```thrust::reduce``` as follows:
 
@@ -400,7 +400,7 @@ The SAXPY example in the Transformations section showed how kernel fusion can be
 
 Here we have a *unary operator* called ```square``` that squares each element of the input sequence. The sum of squares is then computed using a standard ```plus``` reduction. Like the slower version of the SAXPY transformation, we could implement ```norm``` with multiple passes: first a ```transform``` using ```square``` or perhaps just ```multiplies``` and then a ```plus``` reduction over a temporary array. However this would be unnecessarily wasteful and considerably slower. By fusing the ```square``` operation with the reduction kernel we again have a highly optimized implementation which offers the same performance as hand-written kernels.
 
-###Prefix-Sums
+### Prefix-Sums
 
 Parallel prefix-sums, or *scan* operations, are important building blocks in many parallel algorithms such as stream compaction and radix sort. Consider the following source code which illustrates an *inclusive scan* operation using the default *plus* operator:
 
@@ -424,7 +424,7 @@ In an inclusive scan each element of the output is the corresponding [partial su
 
 So now ```data[2] = data[0] + data[1]```. As these examples show, ```inclusive_scan``` and ```exclusive_scan``` are permitted to be performed in-place. Thrust also provides the functions ```transform_inclusive_scan``` and ```transform_exclusive_scan``` which apply a unary function to the input sequence before performing the scan. Refer to the [documentation](http://thrust.github.com/doc/group__prefixsums.html) for a complete list of scan variants.
 
-###Reordering
+### Reordering
 
 Thrust provides support for **partitioning** and **stream compaction** through the following algorithms:
 
@@ -435,7 +435,7 @@ Thrust provides support for **partitioning** and **stream compaction** through t
 
 Refer to the [documentation](http://thrust.github.com/doc/group__reordering.html) for a complete list of reordering functions and examples of their usage.
 
-###Sorting
+### Sorting
 
 Thrust offers several functions to sort data or rearrange data according to a given criterion. The ```thrust::sort``` and ```thrust::stable_sort``` functions are direct analogs of ```sort``` and ```stable_sort``` in the C++ Standard Library.
 
@@ -550,7 +550,7 @@ Here we have used the ```make_permutation_iterator``` function to simplify the c
 
 When a ```permutation_iterator``` is used as an output sequence of a function it is equivalent to fusing a scatter operation to the algorithm. In general ```permutation_iterator``` allows you to operate on a specific set of values in a sequence instead of the entire sequence.
 
-###```zip_iterator```
+### ```zip_iterator```
 
 Keep reading, we've saved the best iterator for last! The ```zip_iterator``` is an **extremely** useful gadget: it takes multiple input sequences and yields a sequence of tuples. In this example we "zip" together a sequence of ```int``` and a sequence of ```char``` into a sequence of ```tuple<int,char>``` and compute the ```tuple``` with the maximum value.
 
