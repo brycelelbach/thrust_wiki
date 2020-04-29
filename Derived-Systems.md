@@ -63,6 +63,9 @@ The full source code for this program is included in the [```minimal_custom_back
 
 Temporary Allocation Example
 ----------------------------
+
+**WARNING: This is all deprecated now, you can pass an allocator to an algorithm using the call operator of an execution policy, e.g. `thrust::device(my_alloc)`**
+
 Some function invocations can be intercepted in this way to improve Thrust's performance. For example, Thrust uses the function ```get_temporary_buffer``` to allocate temporary memory used in the implementation of some algorithms. In the CUDA system, ```get_temporary_buffer``` calls ```cudaMalloc```, which can be a performance bottleneck. So it can be advantageous to intercept these kinds of calls if a faster allocation scheme is available.
 
 This example demonstrates how to intercept ```get_temporary_buffer``` and ```return_temporary_buffer``` when Thrust is allocating temporary storage. We proceed in the same manner as in the last example: we introduce a special ```my_policy``` type to distinguish which calls to Thrust should be customized, and we introduce special overloads of ```get_temporary_buffer``` and ```return_temporary_buffer``` which get dispatched when ```my_policy``` is encountered.
