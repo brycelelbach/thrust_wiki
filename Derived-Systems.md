@@ -96,7 +96,7 @@ template<typename T>
 
 
 template<typename Pointer>
-  void return_temporary_buffer(my_policy, Pointer p)
+  void return_temporary_buffer(my_policy, Pointer p, std::ptrdiff_t)
 {
   std::cout << "return_temporary_buffer(my_policy): calling device_free" << std::endl;
 
